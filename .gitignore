@@ -28,3 +28,13 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+.idea/
+.vscode/
+public/system/
+public/assets/
+# Ignore application configuration
+/config/application.yml
+coverage
+yarn.lock
+.ruby-gemset

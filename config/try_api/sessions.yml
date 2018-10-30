@@ -1,0 +1,20 @@
+title: 'Sessions'
+methods:
+  -
+    title: 'Login'
+    path: '/login'
+    method: 'post'
+    parameters:
+      -
+        name: 'email'
+        type: 'string'
+      -
+        name: 'password'
+        type: 'string'
+  -
+    title: 'Logout'
+    path: '/logout'
+    method: 'delete'
+    headers:
+      -
+        name: 'Session-Token'

@@ -1,0 +1,10 @@
+name: 'Chat'
+host: 'http://localhost'
+port: 3000
+api_prefix: 'api/v1'
+
+menu_items:
+  -
+    include!: users
+  -
+    include!: sessions

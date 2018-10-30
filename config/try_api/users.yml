@@ -1,0 +1,70 @@
+title: 'Users'
+methods:
+  -
+    title: 'Create'
+    path: '/users'
+    method: 'post'
+    parameters:
+      -
+        name: 'email'
+        type: 'string'
+        required: true
+      -
+        name: 'password'
+        type: 'string'
+        required: true
+      -
+        name: 'password_confirmation'
+        type: 'string'
+        required: true
+      -
+        name: 'login'
+        type: 'string'
+        required: true
+      -
+        name: 'first_name'
+        type: 'string'
+      -
+        name: 'last_name'
+        type: 'string'
+      -
+        name: 'country_id'
+        type: 'integer'
+        required: true
+  -
+    title: 'Profile'
+    path: '/users/profile'
+    method: 'get'
+    headers:
+      -
+        name: 'Session-Token'
+  -
+    title: 'Update'
+    path: '/users/update_profile'
+    method: 'put'
+    headers:
+      -
+        name: 'Session-Token'
+    parameters:
+      -
+        name: 'email'
+        type: 'string'
+        required: true
+      -
+        name: 'password'
+        type: 'string'
+        required: true
+      -
+        name: 'password_confirmation'
+        type: 'string'
+        required: true
+      -
+        name: 'login'
+        type: 'string'
+        required: true
+      -
+        name: 'first_name'
+        type: 'string'
+      -
+        name: 'last_name'
+        type: 'string'
