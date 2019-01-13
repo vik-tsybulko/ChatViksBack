@@ -10,6 +10,8 @@ class Ability
   def user_abilities(user)
     can :manage, User, id: user.id
     can :read, User
+    can :manage, ChatRoom, user_id: user.id || new_record?
+    can :manage, Message, user_id: user.id || new_record?
   end
 
   def admin_abilities(user)

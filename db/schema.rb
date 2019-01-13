@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_164443) do
+ActiveRecord::Schema.define(version: 2018_10_30_213905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.bigint "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string "avatar_url"
+    t.string "avatar_preview_url"
+    t.bigint "user_id"
+    t.integer "chat_room_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
+  create_table "chat_rooms_users", force: :cascade do |t|
+    t.bigint "chat_room_id"
+    t.bigint "user_id"
+    t.index ["chat_room_id"], name: "index_chat_rooms_users_on_chat_room_id"
+    t.index ["user_id"], name: "index_chat_rooms_users_on_user_id"
+  end
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -25,6 +47,18 @@ ActiveRecord::Schema.define(version: 2018_10_28_164443) do
     t.string "flag_content_type"
     t.bigint "flag_file_size"
     t.datetime "flag_updated_at"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.bigint "chat_room_id"
+    t.bigint "user_id"
+    t.string "ui_id"
+    t.boolean "read", default: false
+    t.boolean "updated", default: false
+    t.integer "message_type"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|

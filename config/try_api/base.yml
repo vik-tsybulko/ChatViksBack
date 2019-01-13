@@ -8,3 +8,5 @@ menu_items:
     include!: users
   -
     include!: sessions
+  -
+    include!: chat_rooms

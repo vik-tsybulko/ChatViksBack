@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   mount TryApi::Engine => '/developers'
+  mount ActionCable.server => '/cable'
 
   scope '(:locale)' do
     namespace :api do
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
             put :update, path: :update_profile
           end
         end
+        resources :chat_rooms
       end
     end
   end

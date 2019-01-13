@@ -1,0 +1,28 @@
+title: 'ChatRooms'
+methods:
+-
+  title: 'Create'
+  path: '/chat_rooms'
+  method: 'post'
+  headers:
+    -
+      name: 'Session-Token'
+  parameters:
+    -
+      name: 'title'
+      type: 'string'
+      required: true
+    -
+      name: 'chat_room_type'
+      type: 'string'
+      descriptions: 'direct | groups'
+      required: true
+    -
+      name: 'user_ids'
+      type: 'array'
+      parameters:
+        -
+          type: 'integer'
+    -
+      name: 'avatar'
+      type: 'image'
