@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/viholovko/try_api.git
+  revision: e82ca25fc30c4bd7ac5216e2c636b0c2f4adfde6
+  branch: master
+  specs:
+    try_api (0.1.15.3)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -214,8 +222,6 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    try_api (0.1.18)
-      rails
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -263,7 +269,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
-  try_api
+  try_api (= 0.1.15.3)!
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
