@@ -67,4 +67,6 @@ gem 'browserify-rails'
 gem 'pg'
 gem 'rest-client'
 gem 'react-rails'
-gem 'try_api', '0.1.15.3', :git => 'https://github.com/viholovko/try_api.git', :branch => 'master'
+gem 'try_api', '0.1.18', :git => 'https://github.com/vik-tsybulko/try_api.git', :branch => 'master'
+gem "rack", ">= 2.0.6"
+gem "loofah", ">= 2.2.3"
