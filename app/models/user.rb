@@ -3,6 +3,7 @@ class User < ApplicationRecord
   belongs_to :role
   belongs_to :country, required: false
   has_many :sessions
+  has_many :chat_rooms
 
   attr_accessor :password, :password_confirmation
 
@@ -47,6 +48,22 @@ class User < ApplicationRecord
 
   def authenticate(password)
     self.encrypted_password == encrypt(password)
+  end
+
+  def users_from_my_chats
+    users = User.arel_table
+    chat_rooms_users = Arel::Table.new :chat_rooms_users
+
+    q = users.project(users[:id])
+    q.join(chat_rooms_users, Arel::Nodes::OuterJoin)
+      .on(chat_rooms_users[:chat_room_id].in(chat_rooms.ids))
+
+    q.where(users[:id].eq(chat_rooms_users[:user_id])
+                  .and(chat_rooms_users[:user_id].not_eq(id)))
+
+    q.group(users[:id])
+
+    User.find_by_sql q.to_sql
   end
 
   private

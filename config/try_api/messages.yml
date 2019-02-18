@@ -1,0 +1,22 @@
+title: 'Messages'
+methods:
+-
+  title: 'Create'
+  path: '/chat_rooms/:chat_room_id/messages'
+  method: 'post'
+  headers:
+  -
+    name: 'Session-Token'
+  parameters:
+  -
+    name: 'message'
+    type: 'string'
+    required: true
+  -
+    name: 'message_type'
+    type: 'string'
+    descriptions: 'text | '
+    required: true
+  -
+    name: 'ui_id'
+    type: 'string'

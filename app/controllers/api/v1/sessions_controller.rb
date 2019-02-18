@@ -15,6 +15,14 @@ class Api::V1::SessionsController < Api::V1::BaseController
     end
   end
 
+  def check
+    if current_session.present?
+      head :no_content
+    else
+      respond_with_errors
+    end
+  end
+
   def destroy
     sign_out
     render json: {message: 'Logout successful'}

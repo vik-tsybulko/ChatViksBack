@@ -7,6 +7,11 @@ class Api::BaseController < ApplicationController
 
   def set_default_response_format
     request.format = :json
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    response.headers['Access-Control-Request-Method'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization Set-Cookie'
   end
 
   rescue_from Exception, with: :catch_exceptions

@@ -2,11 +2,11 @@ class Api::V1::ChatRoomsController < Api::V1::BaseController
   load_and_authorize_resource
 
   def index
-
+    @chat_rooms = current_user.chat_rooms
   end
 
   def create
-    if @chat_room.save
+    if @chat_room.save!
       render json: { message: 'Success', chat_room: @chat_room.to_json }
     else
       render json: { errors: [@chat_room.errors] }, status: :bad_request

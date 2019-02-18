@@ -1,12 +1,16 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
     identified_by :current_user
+    identified_by :chat_room
 
     def connect
       begin
         reject_unauthorized_connection unless current_user
+        chat_room.user_ids
+        reject_unauthorized_connection unless chat_room.user_ids.include? current_user.id
       rescue Exception => e
-        e.message
+        puts e.message
+        reject_unauthorized_connection
       end
     end
 
@@ -23,6 +27,10 @@ module ApplicationCable
 
       def current_user=(user)
         @current_user = user
+      end
+
+      def chat_room
+        @chat_room ||= ChatRoom.find_by_id cookies.permanent[:chat_room_id]
       end
   end
 end
